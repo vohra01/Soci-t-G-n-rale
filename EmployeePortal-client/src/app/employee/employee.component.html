@@ -1,0 +1,54 @@
+<div class="container" >
+ 
+
+  <table class="table" >
+    <thead>
+      <tr>
+        <th>SrNo</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody *ngIf='employees'>
+      <tr class="success" *ngFor='let employee of employees;let i=index'>
+        <td>{{i+1}}</td>
+        <td>{{employee.fname}}</td>
+        <td>{{employee.lname}}</td>
+        <td>{{employee.gender}}</td>
+        <td>{{employee.dob}}</td>
+        <td>{{employee.department}}</td>
+        <td>
+          <button type="button" style="margin:5px;" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal" (click)='setCurrentEmployee(i)'><span class="glyphicon glyphicon-minus"></span></button>
+          
+        </td>
+      </tr>      
+      
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" [routerLink]="['/new']">Add New Employee</button>
+  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <div class="alert alert-danger alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" data-dismiss="modal">&times;</a>
+          <strong>Are you sure you want to delete this record?</strong>
+          <br/><br/>
+          <div class="row">
+              <div class="col-lg-4"></div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-danger" (click)='deleteEmployee()' data-dismiss="modal">Yes</button>
+              </div>
+              <div class="col-lg-2">
+                  <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+          
+      </div>
+        
+      </div>
+    </div>
+</div>
